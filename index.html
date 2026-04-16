@@ -1,156 +1,158 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website0X</title>
+    <title>Network Access Control</title>
     <style>
         body { 
             margin: 0; 
             overflow: hidden; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0078d7;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #111;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-        }
-
-        .start-container {
-            text-align: center;
             color: white;
-            background: rgba(0,0,0,0.2);
-            padding: 40px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
         }
 
-        button {
-            background: white;
-            color: #0078d7;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
+        .access-box {
+            text-align: center;
+            border: 2px solid #333;
+            padding: 50px;
+            background: #000;
+            box-shadow: 0 0 30px rgba(255,0,0,0.2);
+        }
+
+        h1 { font-size: 2rem; letter-spacing: 2px; }
+        p { color: #888; margin-bottom: 30px; }
+
+        .access-btn {
+            background: transparent;
+            color: #ff3e3e;
+            border: 2px solid #ff3e3e;
+            padding: 15px 40px;
+            font-size: 1.1rem;
             font-weight: bold;
-            border-radius: 5px;
+            text-transform: uppercase;
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.3s;
         }
 
-        button:hover { transform: scale(1.1); background: #f0f0f0; }
+        .access-btn:hover { 
+            background: #ff3e3e; 
+            color: white;
+            box-shadow: 0 0 20px #ff3e3e;
+        }
 
         
         .error-popup {
             position: absolute;
-            width: 300px;
+            width: 280px;
             background: #f0f0f0;
-            border: 1px solid #000;
-            box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
+            border: 2px solid #000;
+            box-shadow: 8px 8px 0px #000;
             z-index: 9999;
-            user-select: none;
+            color: black;
         }
 
         .error-header {
-            background: linear-gradient(to right, #000080, #1084d0);
+            background: #ff3e3e;
             color: white;
-            padding: 3px 10px;
+            padding: 5px 10px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
             font-size: 12px;
             font-weight: bold;
         }
 
         .error-content {
-            padding: 20px;
+            padding: 15px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            font-size: 13px;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: bold;
         }
 
-        .error-icon {
-            background: red;
+        .x-mark {
             color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
+            background: black;
+            width: 20px;
+            height: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        .close-btn {
-            background: #c0c0c0;
-            border: 1px solid #fff;
-            padding: 0 5px;
-            cursor: pointer;
-            color: black;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
 
-    <div class="start-container" id="startScreen">
-        <h1>start website</h1>
-        <p>click here to start</p>
-        <button onclick="startChaos()">confirm</button>
+    <div class="access-box" id="gate">
+        <h1>ACCESS RESTRICTED</h1>
+        <p>Verification required to proceed to the network.</p>
+        <button class="access-btn" onclick="triggerChaos()">Click here for access</button>
     </div>
 
     <script>
-        const errorMessages = [
-            "Error 404: Brain not found",
-            "Systeem oververhit!",
-            "Wilt u echt alle bestanden verwijderen?",
-            "Toegang geweigerd!",
-            "Kritieke fout in kern-module",
-            "Geheugen vol: Download meer RAM",
-            "Virus detected",
-            "Uw computer gaat over 5 seconden slapen",
-            "Muisaanwijzer is ontsnapt",
-            "Niet op deze knop drukken!"
+        const alerts = [
+            "CRITICAL SYSTEM FAILURE",
+            "UNAUTHORIZED ACCESS DETECTED",
+            "DATA CORRUPTION IN PROGRESS",
+            "MALWARE INJECTION FAILED",
+            "CPU OVERHEATING - 105°C",
+            "KERNEL PANIC: 0x000213",
+            "DELETING SYSTEM32...",
+            "BUFFER OVERFLOW ERROR",
+            "MEMORY LEAK DETECTED",
+            "HARD DRIVE DISCONNECTED",
+            "FATAL EXCEPTION OCCURRED",
+            "USER BREACH DETECTED"
         ];
 
-        function createPopup() {
-            const popup = document.createElement('div');
-            popup.className = 'error-popup';
+        function spawnError() {
+            const div = document.createElement('div');
+            div.className = 'error-popup';
             
             
-            const x = Math.random() * (window.innerWidth - 300);
-            const y = Math.random() * (window.innerHeight - 150);
-            popup.style.left = x + 'px';
-            popup.style.top = y + 'px';
+            const x = Math.random() * (window.innerWidth - 280);
+            const y = Math.random() * (window.innerHeight - 100);
+            div.style.left = x + 'px';
+            div.style.top = y + 'px';
 
-            const msg = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+            const randomMsg = alerts[Math.floor(Math.random() * alerts.length)];
 
-            popup.innerHTML = `
+            div.innerHTML = `
                 <div class="error-header">
-                    <span>System Error</span>
-                    <div class="close-btn" onclick="this.parentElement.parentElement.remove()">X</div>
+                    <span>SECURITY ALERT</span>
+                    <span style="cursor:pointer" onclick="this.parentElement.parentElement.remove()">[X]</span>
                 </div>
                 <div class="error-content">
-                    <div class="error-icon">X</div>
-                    <div>${msg}</div>
+                    <div class="x-mark">!</div>
+                    <div>${randomMsg}</div>
                 </div>
             `;
 
-            document.body.appendChild(popup);
+            document.body.appendChild(div);
         }
 
-        function startChaos() {
+        function triggerChaos() {
             
-            document.getElementById('startScreen').style.display = 'none';
-            document.body.style.background = '#000'; 
+            document.getElementById('gate').style.display = 'none';
+            document.body.style.background = '#000';
 
             
-            setInterval(createPopup, 3000);
-            
+            setInterval(spawnError, 50);
+
             
             setTimeout(() => {
-                setInterval(createPopup, 1000);
-            }, 5000);
+                setInterval(spawnError, 30);
+                setInterval(() => {
+                    document.body.style.background = (document.body.style.background === 'black' ? '#220000' : 'black');
+                }, 100); 
+            }, 3000);
         }
     </script>
 </body>
