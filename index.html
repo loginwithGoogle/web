@@ -1,1 +1,189 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAcademy | Professional Programming Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #0f172a; --accent: #3b82f6; --text-light: #64748b; --bg: #f8fafc; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--primary); margin: 0; line-height: 1.6; }
+        
+        
+        nav { background: white; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-weight: 700; font-size: 1.4rem; color: var(--primary); text-decoration: none; }
+        .lang-selector select { border: 1px solid #e2e8f0; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 14px; outline: none; }
 
+        
+        header { padding: 100px 8%; background: white; border-bottom: 1px solid #e2e8f0; }
+        .hero-content { max-width: 800px; }
+        header h1 { font-size: 3rem; margin: 0; letter-spacing: -2px; line-height: 1.1; }
+        header p { color: var(--text-light); font-size: 1.25rem; margin-top: 20px; }
+
+        
+        .container { padding: 80px 8%; max-width: 1300px; margin: 0 auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 100px; }
+        
+        
+        .card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; transition: 0.3s; cursor: pointer; text-decoration: none; color: inherit; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--accent); }
+        .card-img { width: 100%; height: 200px; object-fit: cover; }
+        .card-body { padding: 25px; }
+        .card h3 { margin: 0 0 10px; font-size: 1.2rem; }
+        .card p { font-size: 0.95rem; color: var(--text-light); }
+
+        
+        .detail-section { background: white; border-radius: 16px; padding: 50px; margin-bottom: 40px; border: 1px solid #e2e8f0; }
+        .detail-section h2 { font-size: 2rem; margin-top: 0; color: var(--accent); }
+        .detail-section h4 { margin-bottom: 10px; color: var(--primary); }
+        .detail-section ul { padding-left: 20px; color: var(--text-light); }
+        .detail-section ul li { margin-bottom: 8px; }
+
+        footer { text-align: center; padding: 60px; color: var(--text-light); border-top: 1px solid #e2e8f0; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">DevAcademy<span style="color:var(--accent);">.</span></a>
+        <div class="lang-selector">
+            <select id="langSwitch" onchange="updateLanguage()">
+                <option value="nl">🇳🇱 Nederlands</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="de">🇩🇪 Deutsch</option>
+            </select>
+        </div>
+    </nav>
+
+    <header>
+        <div class="hero-content">
+            <h1 id="h-title">Leer de talen van de toekomst</h1>
+            <p id="h-sub">Word een expert in software development met onze diepgaande gidsen over de meest gevraagde programmeertalen van dit moment.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            <a href="#python" class="card">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600" class="card-img">
+                <div class="card-body">
+                    <h3>Python</h3>
+                    <p id="c1-short">De nummer 1 keuze voor AI en Data Science.</p>
+                </div>
+            </a>
+            <a href="#js" class="card">
+                <img src="https://images.unsplash.com/photo-1579403175398-b8bc243b35d7?w=600" class="card-img">
+                <div class="card-body">
+                    <h3>JavaScript</h3>
+                    <p id="c2-short">De onmisbare motor achter interactieve websites.</p>
+                </div>
+            </a>
+            <a href="#cpp" class="card">
+                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600" class="card-img">
+                <div class="card-body">
+                    <h3>C++</h3>
+                    <p id="c3-short">Maximale rekenkracht en snelheid voor complexe systemen.</p>
+                </div>
+            </a>
+        </div>
+
+        <div id="python" class="detail-section">
+            <h2 id="p-title">Python: Eenvoud en Kracht</h2>
+            <p id="p-desc">Python is tegenwoordig de meest populaire taal ter wereld. Dankzij de eenvoudige syntaxis, die veel op Engels lijkt, is het de perfecte taal voor beginners.</p>
+            <h4 id="p-why">Waarom Python?</h4>
+            <ul id="p-list">
+                <li><strong>Artificial Intelligence:</strong> Gebruikt voor ChatGPT en zelfrijdende auto's.</li>
+                <li><strong>Data Science:</strong> Analyseer miljoenen rijen aan data in een handomdraai.</li>
+                <li><strong>Automatisering:</strong> Bespaar uren werk door saaie taken te scripten.</li>
+            </ul>
+        </div>
+
+        <div id="js" class="detail-section">
+            <h2 id="j-title">JavaScript: De Koning van het Web</h2>
+            <p id="j-desc">JavaScript is de enige taal die in elke webbrowser ter wereld draait. Zonder JS zou het internet bestaan uit alleen maar tekst en plaatjes zonder interactie.</p>
+            <h4 id="j-why">Wat kun je ermee?</h4>
+            <ul id="j-list">
+                <li><strong>Websites:</strong> Maak alles interactief, van pop-ups tot live feeds.</li>
+                <li><strong>Apps:</strong> Met frameworks zoals React Native bouw je apps voor iPhone en Android.</li>
+                <li><strong>Servers:</strong> Met Node.js draai je JavaScript ook op de server voor databases.</li>
+            </ul>
+        </div>
+
+        <div id="cpp" class="detail-section">
+            <h2 id="c-title">C++: Snelheid zonder Grenzen</h2>
+            <p id="c-desc">C++ staat bekend als een 'low-level' taal. Dit betekent dat het heel dicht bij de hardware van de computer staat, wat zorgt voor ongekende prestaties.</p>
+            <h4 id="c-why">Waar wordt het gebruikt?</h4>
+            <ul id="c-list">
+                <li><strong>Gaming:</strong> De Unreal Engine en grote titels zoals Fortnite draaien op C++.</li>
+                <li><strong>Systemen:</strong> Windows, macOS en webbrowsers zijn grotendeels in C++ geschreven.</li>
+                <li><strong>High-speed trading:</strong> Gebruikt op de beurs waar elke milliseconde telt.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 DevAcademy Global Learning. Alle rechten voorbehouden.</p>
+    </footer>
+
+    <script>
+        const langs = {
+            'nl': {
+                h_t: "Leer de talen van de toekomst",
+                h_s: "Word een expert in software development met onze diepgaande gidsen over programmeertalen.",
+                c1s: "De nummer 1 keuze voor AI en Data Science.",
+                c2s: "De onmisbare motor achter interactieve websites.",
+                c3s: "Maximale rekenkracht en snelheid voor complexe systemen.",
+                p_t: "Python: Eenvoud en Kracht",
+                p_d: "Python is de meest populaire taal ter wereld. De syntaxis lijkt op Engels, perfect voor beginners.",
+                j_t: "JavaScript: De Koning van het Web",
+                j_d: "De enige taal die in elke browser draait. Maakt het internet interactief.",
+                c_t: "C++: Snelheid zonder Grenzen",
+                c_d: "Dicht bij de hardware, voor maximale prestaties in games en systemen."
+            },
+            'en': {
+                h_t: "Master the Languages of the Future",
+                h_s: "Become an expert in software development with our deep-dive guides on programming languages.",
+                c1s: "The #1 choice for AI and Data Science.",
+                c2s: "The essential engine behind interactive websites.",
+                c3s: "Maximum power and speed for complex systems.",
+                p_t: "Python: Simplicity and Power",
+                p_d: "Python is the most popular language in the world. The syntax resembles English, perfect for beginners.",
+                j_t: "JavaScript: King of the Web",
+                j_d: "The only language that runs in every browser. Makes the internet interactive.",
+                c_t: "C++: Limitless Speed",
+                c_d: "Close to the hardware, for maximum performance in games and systems."
+            },
+            'de': {
+                h_t: "Meistern Sie die Sprachen der Zukunft",
+                h_s: "Werden Sie Experte für Softwareentwicklung mit unseren detaillierten Leitfäden.",
+                c1s: "Die erste Wahl für KI und Data Science.",
+                c2s: "Der unverzichtbare Motor für interaktive Websites.",
+                c3s: "Maximale Rechenleistung für komplexe Systeme.",
+                p_t: "Python: Einfachheit und Power",
+                p_d: "Python ist die beliebteste Sprache der Welt. Die Syntax ähnelt dem Englischen.",
+                j_t: "JavaScript: König des Webs",
+                j_d: "Die einzige Sprache, die in jedem Browser läuft. Macht das Internet interaktiv.",
+                c_t: "C++: Grenzenlose Geschwindigkeit",
+                c_d: "Hardwarenah, für maximale Leistung in Spielen und Systemen."
+            }
+        };
+
+        function updateLanguage() {
+            const l = document.getElementById('langSwitch').value;
+            const t = langs[l];
+            document.getElementById('h-title').innerText = t.h_t;
+            document.getElementById('h-sub').innerText = t.h_s;
+            document.getElementById('c1-short').innerText = t.c1s;
+            document.getElementById('c2-short').innerText = t.c2s;
+            document.getElementById('c3-short').innerText = t.c3s;
+            document.getElementById('p-title').innerText = t.p_t;
+            document.getElementById('p-desc').innerText = t.p_d;
+            document.getElementById('j-title').innerText = t.j_t;
+            document.getElementById('j-desc').innerText = t.j_d;
+            document.getElementById('c-title').innerText = t.c_t;
+            document.getElementById('c-desc').innerText = t.c_d;
+        }
+    </script>
+</body>
+</html>
