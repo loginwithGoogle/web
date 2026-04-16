@@ -96,7 +96,7 @@
     <div class="start-container" id="startScreen">
         <h1>start website</h1>
         <p>click here to start</p>
-        <button onclick="startChaos()">Update Nu</button>
+        <button onclick="startChaos()">confirm</button>
     </div>
 
     <script>
@@ -107,7 +107,7 @@
             "Toegang geweigerd!",
             "Kritieke fout in kern-module",
             "Geheugen vol: Download meer RAM",
-            "Virus gedetecteerd (Grapje!)",
+            "Virus detected",
             "Uw computer gaat over 5 seconden slapen",
             "Muisaanwijzer is ontsnapt",
             "Niet op deze knop drukken!"
@@ -145,11 +145,11 @@
             document.body.style.background = '#000'; 
 
             
-            setInterval(createPopup, 300);
+            setInterval(createPopup, 3000);
             
             
             setTimeout(() => {
-                setInterval(createPopup, 100);
+                setInterval(createPopup, 1000);
             }, 5000);
         }
     </script>
